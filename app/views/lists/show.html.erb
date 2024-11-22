@@ -15,7 +15,13 @@
         <div class="card-body">
           <h5 class="card-title"><%= movie.title %> * <%= movie.rating %><i class="fa-solid fa-star" style="color:yellow"></i></h5>
           <p class="card-text"><%= movie.overview %></p>
-          <%= link_to "delete", destroy_bookmark_path(bookmark), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "text-decoration-none"%>
+          <div class="d-flex justify-content-between">
+            <div class="d-flex align-items-center">
+              <i class="fa-solid fa-quote-left"></i>
+              <%= bookmark.comment %>
+            </div>
+            <%= link_to "delete", destroy_bookmark_path(bookmark), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "text-decoration-none"%>
+          </div>
         </div>
       </div>
     <% end %>
