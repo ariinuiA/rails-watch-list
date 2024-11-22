@@ -1,0 +1,11 @@
+
+<div class="container" style="background-color: white;">
+<h1>Add a movie to your list...</h1>
+  <%= simple_form_for [@list, @bookmark] do |f| %>
+    <%= f.input :comment, class: "form-control" %>
+    <div class="form-group">
+      <%= f.association :movie, prompt: "Select a movie", input_html: {data: {controller: "tom-select"}} %>
+    </div>
+    <%= f.submit class: "btn btn-primary" %>
+  <% end %>
+</div>

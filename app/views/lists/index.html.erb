@@ -1,0 +1,36 @@
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://t4.ftcdn.net/jpg/01/96/03/21/360_F_196032189_GSxWP4Gn6jghr4jP2A9nSdAM1d567eOE.jpg);">
+  <div class="container">
+    <h1>Welcome to your own movie theater.</h1>
+    <h3>Get your popcorn, drinks, relax and enjoy the show.</h3>
+  </div>
+</div>
+
+<div class="container mt-5">
+  <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+    <div class="container-fluid">
+      <h1>My lists</h1>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <%= link_to "Create a movie list", new_list_path, class: "nav-link btn btn-flat" %>
+            </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="cards mb-5">
+    <% @lists.each do |list| %>
+      <%= link_to list_path(list), class: "text-decoration-none" do %>
+        <div class="card-category"
+            style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://t3.ftcdn.net/jpg/01/34/53/74/360_F_134537443_VendrqyXIWyHrZgxdIsfyKUost734JDP.jpg)">
+          <h1><%= list.name %></h1>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

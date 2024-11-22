@@ -1,0 +1,22 @@
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://t3.ftcdn.net/jpg/01/34/53/74/360_F_134537443_VendrqyXIWyHrZgxdIsfyKUost734JDP.jpg);">
+  <div class="container d-flex justify-content-center align-items-center">
+    <h1><%= @list.name %> movies</h1>
+  </div>
+</div>
+
+<div class="container">
+  <%= link_to "Add a movie", new_list_bookmark_path(@list), class: "nav-link btn btn-flat" %>
+  <div class="row">
+    <% @list.movies.each do |movie| %>
+      <% bookmark = Bookmark.find_by(list: @list, movie: movie) %>
+      <div class="card row-4 m-2" style="width: 25rem;">
+        <img class="card-img-top" src=<%= movie.poster_url %> alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title"><%= movie.title %> * <%= movie.rating %><i class="fa-solid fa-star" style="color:yellow"></i></h5>
+          <p class="card-text"><%= movie.overview %></p>
+          <%= link_to "delete", destroy_bookmark_path(bookmark), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "text-decoration-none"%>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
