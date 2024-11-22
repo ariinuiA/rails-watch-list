@@ -11,23 +11,34 @@
     style: "background: red" %>
     <%= link_to "Add a movie", new_list_bookmark_path(@list), class: "nav-link btn btn-flat" %>
   </div>
-  <div class="row border-bottom border-2 mb-5">
-    <% @list.movies.each do |movie| %>
-      <% bookmark = Bookmark.find_by(list: @list, movie: movie) %>
-      <div class="card row-4 m-2" style="width: 25rem;">
-        <img class="card-img-top" src=<%= movie.poster_url %> alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title"><%= movie.title %> * <%= movie.rating %><i class="fa-solid fa-star" style="color:yellow"></i></h5>
-          <p class="card-text"><%= movie.overview %></p>
-          <div class="d-flex justify-content-between">
-            <div class="d-flex align-items-center">
-              <i class="fa-solid fa-quote-left"></i>
-              <%= bookmark.comment %>
+  <div class="border-bottom border-2 mb-5">
+    <div class="row">
+      <% @list.movies.each do |movie| %>
+        <% bookmark = Bookmark.find_by(list: @list, movie: movie) %>
+        <div class="card row-4 m-2" style="width: 25rem;">
+          <img class="card-img-top" src=<%= movie.poster_url %> alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title"><%= movie.title %> * <%= movie.rating %><i class="fa-solid fa-star" style="color:yellow"></i></h5>
+            <p class="card-text"><%= movie.overview %></p>
+            <div class="d-flex justify-content-between">
+              <div class="d-flex align-items-center">
+                <i class="fa-solid fa-quote-left"></i>
+                <%= bookmark.comment %>
+              </div>
+              <%= link_to "delete", destroy_bookmark_path(bookmark), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "text-decoration-none"%>
             </div>
-            <%= link_to "delete", destroy_bookmark_path(bookmark), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "text-decoration-none"%>
           </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-6">
+      <h1>Reviews</h1>
+    </div>
+    <div class="col-6">
+      <h1>Add your review</h1>
+    </div>
   </div>
 </div>
