@@ -1,4 +1,4 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path @list.photo.key, height: 100, crop: :fill %>')">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path @list.photo.key%>')">
   <div class="container d-flex justify-content-center align-items-center">
     <h1><%= @list.name %> movies</h1>
   </div>
@@ -11,7 +11,7 @@
     style: "background: red" %>
     <%= link_to "Add a movie", new_list_bookmark_path(@list), class: "nav-link btn btn-flat" %>
   </div>
-  <div class="row">
+  <div class="row border-bottom border-2 mb-5">
     <% @list.movies.each do |movie| %>
       <% bookmark = Bookmark.find_by(list: @list, movie: movie) %>
       <div class="card row-4 m-2" style="width: 25rem;">
