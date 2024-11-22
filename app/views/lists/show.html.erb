@@ -1,12 +1,16 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://t3.ftcdn.net/jpg/01/34/53/74/360_F_134537443_VendrqyXIWyHrZgxdIsfyKUost734JDP.jpg);">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path @list.photo.key, height: 100, crop: :fill %>')">
   <div class="container d-flex justify-content-center align-items-center">
     <h1><%= @list.name %> movies</h1>
   </div>
 </div>
 
 <div class="container">
-  <%= link_to "Add a movie", new_list_bookmark_path(@list), class: "nav-link btn btn-flat" %>
-  <%= link_to "delete this list", list_path(@list), class: "btn btn-cancel", data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this list?" } %>
+  <div class="d-flex justify-content-between mb-3">
+    <%= link_to "delete this list", list_path(@list),
+    class: "btn btn-flat", data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this list?" },
+    style: "background: red" %>
+    <%= link_to "Add a movie", new_list_bookmark_path(@list), class: "nav-link btn btn-flat" %>
+  </div>
   <div class="row">
     <% @list.movies.each do |movie| %>
       <% bookmark = Bookmark.find_by(list: @list, movie: movie) %>

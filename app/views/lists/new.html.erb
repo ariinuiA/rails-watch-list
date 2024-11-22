@@ -3,7 +3,7 @@
   <%= simple_form_for(@list) do |f| %>
     <%= f.input :name, class: "form-control" %>
     <div class="form-group">
-    <%= f.input :background_image, as: :file, label: "Upload Background Image", input_html: { class: "form-control" } %>
+    <%= f.input :photo, as: :file %>
   </div>
     <%= f.submit class: "btn btn-primary" %>
   <% end %>
