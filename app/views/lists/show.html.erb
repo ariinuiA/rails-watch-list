@@ -36,9 +36,24 @@
   <div class="row">
     <div class="col-6">
       <h1>Reviews</h1>
+      <% @list.reviews.each do |review| %>
+        <div>
+          <% review.rating.times do %>
+            <i class="fas fa-star star-yellow"></i>
+          <% end %>
+          <small><em class="text-muted"><%= distance_of_time_in_words_to_now(review.created_at) %> ago</em></small>
+          <p class="mb-0"><%= review.comment %></p>
+        </div>
+        <hr>
+      <% end %>
     </div>
     <div class="col-6">
       <h1>Add your review</h1>
+      <%= simple_form_for [@list, @review] do |f| %>
+          <%= f.input :comment, placeholder: "Add your review here..." %>
+          <%= f.input :rating, as: :select, collection: (1..5), required: true, label: false, input_html: { data: { controller: "star-rating" } } %>
+          <%= f.submit class: "btn btn-flat mt-2" %>
+        <% end %>
     </div>
   </div>
 </div>

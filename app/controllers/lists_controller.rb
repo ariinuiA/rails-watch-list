@@ -6,6 +6,7 @@ class ListsController < ApplicationController
   end
 
   def show
+    @review = Review.new(list: @list)
   end
 
   def new
