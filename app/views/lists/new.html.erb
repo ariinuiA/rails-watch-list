@@ -3,8 +3,8 @@
   <%= simple_form_for(@list) do |f| %>
     <%= f.input :name, class: "form-control" %>
     <div class="form-group">
-    <%= f.input :photo, as: :file %>
-  </div>
+      <%= f.input :photo, as: :file %>
+    </div>
     <%= f.submit class: "btn btn-primary" %>
   <% end %>
 </div>
